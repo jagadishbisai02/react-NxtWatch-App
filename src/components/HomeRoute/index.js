@@ -8,6 +8,7 @@ import {
   HomeSideContainer,
   BannerImage,
   HomeStickyContainer,
+  ModalPara,
   CloseButton,
   ModalContainer,
   GetItNowButton,
@@ -34,7 +35,7 @@ class HomeRoute extends Component {
               src="https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-light-theme-img.png"
               alt="nxt watch logo"
             />
-            <p>Buy Nxt Watch Premium</p>
+            <ModalPara>Buy Nxt Watch Premium prepaid plans with UPI</ModalPara>
             <GetItNowButton>GET IT NOW</GetItNowButton>
           </ModalContainer>
           <CloseButton

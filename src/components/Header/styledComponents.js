@@ -5,6 +5,8 @@ export const NavHeader = styled.nav`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  padding-left: 15px;
+  padding-right: 10px;
   position: sticky;
   scroll-behavior: smooth;
   background-color: ${props => props.bgColor};

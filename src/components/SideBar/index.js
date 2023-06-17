@@ -14,6 +14,7 @@ import {
   BottomText,
   IconsContainer,
   IconImage,
+  BottomItemText,
 } from './styledComponents'
 
 class SideBar extends Component {
@@ -133,15 +134,19 @@ class SideBar extends Component {
                   alt="linked in logo"
                 />
               </IconsContainer>
-              <ItemText color={textColor}>
+              <BottomItemText color={textColor}>
                 Enjoy! Now to see your channels and recommendations!
-              </ItemText>
+              </BottomItemText>
             </SideBarBottomContainer>
           </SideBarContainer>
         )
       }}
     </CartContext.Consumer>
   )
+
+  render() {
+    return <>{this.renderStatusItem()}</>
+  }
 }
 
 export default SideBar

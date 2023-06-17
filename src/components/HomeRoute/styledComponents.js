@@ -5,6 +5,7 @@ export const HomeContainer = styled.div`
   display: flex;
   flex-direction: row;
   background-color: ${props => props.bgColor};
+  height: 100vh;
 `
 
 export const HomeSideContainer = styled.div`
@@ -32,14 +33,14 @@ export const CloseButton = styled.button`
   border-radius: 10px;
   cursor: pointer;
   outline: none;
-  align-self: flex-end;
+  align-self: flex-start;
 `
 
 export const ModalContainer = styled.div`
   display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: flex-start;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 `
 
 export const GetItNowButton = styled.button`
@@ -56,8 +57,19 @@ export const BannerImageContainer = styled.div`
   background-image: url('https://assets.ccbp.in/frontend/react-js/nxt-watch-banner-bg.png');
   background-size: cover;
   display: ${props => props.display};
+  display: flex;
   flex-direction: row;
-  width: 80%;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
   height: 40vh;
-  padding: 50px;
+  padding: 25px;
+`
+
+export const ModalPara = styled.p`
+  width: 280px;
+  font-size: 15px;
+  font-weight: 500;
+  font-family: 'Roboto';
+  margin-bottom: 0px;
 `

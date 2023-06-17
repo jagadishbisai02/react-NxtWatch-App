@@ -13,7 +13,6 @@ export const SideBarContainer = styled.div`
 export const NavItemsContainer = styled.div`
   display: flex;
   flex-direction: column;
-  padding-left: 20px;
   padding-right: 30px;
 `
 
@@ -22,22 +21,31 @@ export const TextItemContainer = styled.div`
   justify-content: space-between;
   align-items: center;
   cursor: pointer;
+  margin-top: 0px;
+  padding-left: 15px;
   width: 100%;
   background-color: ${props => props.isActive};
 `
 export const ItemText = styled.p`
 font-family: 'Roboto';
 color: ${props => props.color}
-width: 150px;
-margin-left: 20px;
+width: 100px;
+margin-left: 10px;
+`
+
+export const BottomItemText = styled.p`
+font-family: 'Roboto';
+color: ${props => props.color}
+width: 100px;
 `
 
 export const SideBarBottomContainer = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   height: 100px;
+  padding-left: 15px;
 `
 
 export const BottomText = styled.p`
@@ -62,7 +70,7 @@ export const IconImage = styled.img`
 
 export const NavLink = styled(Link)`
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   text-decoration: none;
   font-size: 15px;
