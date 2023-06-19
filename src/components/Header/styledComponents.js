@@ -6,7 +6,7 @@ export const NavHeader = styled.nav`
   justify-content: space-between;
   align-items: center;
   padding-left: 15px;
-  padding-right: 10px;
+  padding-right: 15px;
   position: sticky;
   scroll-behavior: smooth;
   background-color: ${props => props.bgColor};

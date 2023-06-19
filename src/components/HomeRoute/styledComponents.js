@@ -5,20 +5,22 @@ export const HomeContainer = styled.div`
   display: flex;
   flex-direction: row;
   background-color: ${props => props.bgColor};
-  height: 100vh;
+  height: 95vh;
 `
 
 export const HomeSideContainer = styled.div`
   display: flex;
   flex-direction: column;
   overflow-y: scroll;
-  width: 100%;
+  width: 95%;
   background-color: ${props => props.bgColor};
 `
 
 export const BannerImage = styled.img`
   object-fit: fill;
   width: 250px;
+  position: sticky;
+  position: -webkit-sticky;
 `
 
 export const HomeStickyContainer = styled.div`
@@ -64,6 +66,8 @@ export const BannerImageContainer = styled.div`
   width: 100%;
   height: 40vh;
   padding: 25px;
+  position: sticky;
+  position: -webkit-sticky;
 `
 
 export const ModalPara = styled.p`

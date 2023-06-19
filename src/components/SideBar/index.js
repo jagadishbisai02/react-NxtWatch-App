@@ -43,12 +43,13 @@ class SideBar extends Component {
 
         const textColor = isDarkTheme ? '#f9f9f9' : '#181818'
 
+        console.log()
+
         return (
           <SideBarContainer>
             <NavItemsContainer>
               <TextItemContainer
-                isActive={activeTab === 'HOME' ? '#f1f5f9' : 'transparent'}
-                isActiveColor={bgColor}
+                isActive={activeTab === 'HOME' ? '#e2e8f0' : 'transparent'}
                 onClick={onClickHomeTab}
               >
                 <NavLink
@@ -64,7 +65,7 @@ class SideBar extends Component {
                 </NavLink>
               </TextItemContainer>
               <TextItemContainer
-                isActive={activeTab === 'TRENDING' ? '#f1f5f9' : 'transparent'}
+                isActive={activeTab === 'TRENDING' ? '#e2e8f0' : 'transparent'}
                 onClick={onClickTrendingTabItem}
               >
                 <NavLink
@@ -80,8 +81,7 @@ class SideBar extends Component {
                 </NavLink>
               </TextItemContainer>
               <TextItemContainer
-                isActive={activeTab === 'GAMING' ? '#f1f5f9' : 'transparent'}
-                isActiveColor={bgColor}
+                isActive={activeTab === 'GAMING' ? '#e2e8f0' : 'transparent'}
                 onClick={onClickGamingTabItem}
               >
                 <NavLink

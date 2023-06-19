@@ -2,6 +2,7 @@ import {Component} from 'react'
 import {IoMdClose} from 'react-icons/io'
 import Header from '../Header'
 import CartContext from '../../context/CartContext'
+import SearchVideos from '../SearchVideo'
 
 import {
   HomeContainer,
@@ -46,6 +47,7 @@ class HomeRoute extends Component {
             <IoMdClose size={20} color="#231f20" />
           </CloseButton>
         </BannerImageContainer>
+        <SearchVideos />
       </>
     )
   }

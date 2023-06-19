@@ -1,3 +1,4 @@
+import {formatDistanceToNow} from 'date-fns'
 import CartContext from '../../context/CartContext'
 
 import {
@@ -7,11 +8,21 @@ import {
   VideoDetailsContainer,
   VideoCardBottomContainer,
   VideoDetailsText,
+  ProfileContainer,
 } from './styledComponents'
 
-const GamingVideoItem = props => {
+const VideoCard = props => {
   const {videoDetails} = props
-  const {title, id, thumbnailUrl, viewCount} = videoDetails
+  const {
+    title,
+    id,
+    thumbnailUrl,
+    viewCount,
+    channel,
+    publishedAt,
+  } = videoDetails
+
+  const {name, profileImageUrl} = channel
 
   return (
     <CartContext.Consumer>
@@ -27,12 +38,17 @@ const GamingVideoItem = props => {
             <VideoCardContainer>
               <ThumbnailImage src={thumbnailUrl} alt="video thumbnail" />
               <VideoCardBottomContainer>
+                <ProfileContainer src={profileImageUrl} alt="profile image" />
                 <VideoDetailsContainer>
                   <VideoDetailsText textColor={textColor} size={16}>
                     {title}
                   </VideoDetailsText>
                   <VideoDetailsText textColor={textColor} size={12}>
-                    {viewCount} views
+                    {name}
+                  </VideoDetailsText>
+                  <VideoDetailsText textColor={textColor} size={12}>
+                    {viewCount} views .
+                    {formatDistanceToNow(new Date(`${publishedAt}`))}
                   </VideoDetailsText>
                 </VideoDetailsContainer>
               </VideoCardBottomContainer>
@@ -44,4 +60,4 @@ const GamingVideoItem = props => {
   )
 }
 
-export default GamingVideoItem
+export default VideoCard

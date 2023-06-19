@@ -9,9 +9,17 @@ import {
   VideoDetailsText,
 } from './styledComponents'
 
-const GamingVideoItem = props => {
+const TrendingVideoItem = props => {
   const {videoDetails} = props
-  const {title, id, thumbnailUrl, viewCount} = videoDetails
+  const {
+    title,
+    id,
+    channel,
+    thumbnailUrl,
+    viewCount,
+    publishedAt,
+  } = videoDetails
+  const {name, profileImageUrl} = channel
 
   return (
     <CartContext.Consumer>
@@ -44,4 +52,4 @@ const GamingVideoItem = props => {
   )
 }
 
-export default GamingVideoItem
+export default TrendingVideoItem

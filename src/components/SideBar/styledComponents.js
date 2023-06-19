@@ -6,14 +6,13 @@ export const SideBarContainer = styled.div`
   flex-direction: column;
   justify-content: space-between;
   width: 300px;
-  height: 80vh;
+  height: 90vh;
   position: sticky;
   position: -webkit-sticky;
 `
 export const NavItemsContainer = styled.div`
   display: flex;
   flex-direction: column;
-  padding-right: 30px;
 `
 
 export const TextItemContainer = styled.div`

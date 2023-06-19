@@ -2,6 +2,9 @@ import {Component} from 'react'
 import {Route, Switch} from 'react-router-dom'
 import Login from './components/LoginRoute'
 import ProtectedRoute from './components/ProtectedRoute'
+import VideoDetails from './components/VideoItemRoute'
+import GamingRoute from './components/GamingRoute'
+import TrendingRoute from './components/TrendingRoute'
 import HomeRoute from './components/HomeRoute'
 import CartContext from './context/CartContext'
 import './App.css'
@@ -33,6 +36,9 @@ class App extends Component {
         <Switch>
           <Route exact path="/login" component={Login} />
           <ProtectedRoute exact path="/" component={HomeRoute} />
+          <ProtectedRoute exact path="/trending" component={TrendingRoute} />
+          <ProtectedRoute exact path="/gaming" component={GamingRoute} />
+          <ProtectedRoute exact path="/videos/:id" component={VideoDetails} />
         </Switch>
       </CartContext.Provider>
     )

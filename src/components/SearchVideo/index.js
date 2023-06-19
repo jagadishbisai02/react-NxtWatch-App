@@ -3,7 +3,7 @@ import Cookies from 'js-cookie'
 import Loader from 'react-loader-spinner'
 import {AiOutlineSearch} from 'react-icons/ai'
 import CartContext from '../../context/CartContext'
-import VideoCard from '../VideoCardTwo'
+import VideoCard from '../VideoItem'
 
 import {
   PageLoader,
@@ -17,7 +17,7 @@ import {
   SearchContainer,
   SearchInput,
   SearchBtn,
-  VideoContainer,
+  SearchBox,
 } from './styledComponents'
 
 const apiStatusConstants = {
@@ -65,6 +65,7 @@ class SearchVideos extends Component {
       headers: {
         Authorization: `Bearer ${jwtToken}`,
       },
+      method: 'GET',
     }
     const response = await fetch(apiUrl, options)
     if (response.ok) {
@@ -91,7 +92,7 @@ class SearchVideos extends Component {
 
   renderLoadingView = () => (
     <PageLoader className="loader-container" data-testid="loader">
-      <Loader type="ThreeDots" color="#ffffff" height="50" width="50" />
+      <Loader type="ThreeDots" color="#3b82f6" height="50" width="50" />
     </PageLoader>
   )
 
@@ -101,11 +102,12 @@ class SearchVideos extends Component {
         const {isDarkTheme} = value
         const {searchedVideos} = this.state
 
-        const bgColor = isDarkTheme ? '#231f20' : '#f9f9f9'
+        const bgColor = isDarkTheme ? '#231f20' : '#f4f4f4'
+
         const isVideoAvailable = searchedVideos.length === 0
 
         return isVideoAvailable ? (
-          <NothingContainer>
+          <NothingContainer bgColor={bgColor}>
             <Image
               src="https://assets.ccbp.in/frontend/react-js/nxt-watch-no-search-results-img.png"
               alt="no videos"
@@ -134,7 +136,7 @@ class SearchVideos extends Component {
       {value => {
         const {isDarkTheme} = value
 
-        const bgColor = isDarkTheme ? '#231f20' : '#f9f9f9'
+        const bgColor = isDarkTheme ? '#231f20' : '#f4f4f4'
 
         const textColor = isDarkTheme ? '#231f20' : '#f9f9f9'
 
@@ -152,6 +154,9 @@ class SearchVideos extends Component {
               We are having some trouble to Complete your request. Please try
               again.
             </Desc>
+            <RetryButton type="button" onClick={this.getVideos}>
+              Retry
+            </RetryButton>
           </NothingContainer>
         )
       }}
@@ -175,22 +180,35 @@ class SearchVideos extends Component {
 
   render() {
     return (
-      <SearchContainer>
-        <SearchInput
-          type="search"
-          onChange={this.onChangeSearchInput}
-          placeholder="Search"
-          onKeyDown={this.onEnterClickSearch}
-        />
-        <SearchBtn
-          type="button"
-          onClick={this.onClickSearchButton}
-          data-testid="searchButton"
-        >
-          <AiOutlineSearch />
-        </SearchBtn>
-        <VideoContainer>{this.renderAllVideos()}</VideoContainer>
-      </SearchContainer>
+      <CartContext.Consumer>
+        {value => {
+          const {isDarkTheme} = value
+          const bgColor = isDarkTheme ? '#231f20' : '#f4f4f4'
+
+          return (
+            <>
+              <SearchContainer bgColor={bgColor}>
+                <SearchBox>
+                  <SearchInput
+                    type="search"
+                    onChange={this.onChangeSearchInput}
+                    placeholder="Search"
+                    onKeyDown={this.onEnterClickSearch}
+                  />
+                  <SearchBtn
+                    type="button"
+                    onClick={this.onClickSearchButton}
+                    data-testid="searchButton"
+                  >
+                    <AiOutlineSearch />
+                  </SearchBtn>
+                </SearchBox>
+              </SearchContainer>
+              {this.renderAllVideos()}
+            </>
+          )
+        }}
+      </CartContext.Consumer>
     )
   }
 }
