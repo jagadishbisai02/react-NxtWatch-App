@@ -82,7 +82,6 @@ class VideoDetails extends Component {
     const response = await fetch(apiUrl, options)
     if (response.ok) {
       const fetchedData = await response.json()
-      console.log(fetchedData)
       const updatedData = {
         id: fetchedData.video_details.id,
         title: fetchedData.video_details.title,
@@ -97,7 +96,6 @@ class VideoDetails extends Component {
         publishedAt: fetchedData.video_details.published_at,
         description: fetchedData.video_details.description,
       }
-      console.log(updatedData)
       this.setState({
         videoDetails: updatedData,
         apiStatus: apiStatusConstants.success,
@@ -123,18 +121,18 @@ class VideoDetails extends Component {
         const {name, profileImageUrl, subscriberCount} = channel
         const {addToSaveVideos, removeSaveVideos, isDarkTheme} = value
 
-        const addOrRemoveSaveVideos = () => {
+        const addOrRemoveVideos = () => {
           if (isVideoSaved === true) {
             removeSaveVideos(id)
           } else {
-            addToSaveVideos({...videoDetails, isVideoSaved: true})
+            addToSaveVideos({...videoDetails, videoSaved: true})
           }
         }
 
         const saveVideoToList = () => {
           this.setState(
             prev => ({isVideoSaved: !prev.isVideoSaved}),
-            addOrRemoveSaveVideos,
+            addOrRemoveVideos,
           )
         }
 
@@ -153,7 +151,11 @@ class VideoDetails extends Component {
         const disLikeClass = isDisLiked ? '#3b82f6' : '#616e7c'
 
         const likeIcon = isLiked ? <AiFillLike /> : <AiOutlineLike />
-        const disLikeIcon = isLiked ? <AiFillDislike /> : <AiOutlineDislike />
+        const disLikeIcon = isDisLiked ? (
+          <AiFillDislike />
+        ) : (
+          <AiOutlineDislike />
+        )
 
         const bgColor = isDarkTheme ? '#181818' : '#f1f1f1'
         const textColor = isDarkTheme ? '#f1f1f1' : '#181818'

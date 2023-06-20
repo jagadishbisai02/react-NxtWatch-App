@@ -1,5 +1,6 @@
 import {Component} from 'react'
 import Loader from 'react-loader-spinner'
+import {AiFillFire} from 'react-icons/ai'
 import Cookies from 'js-cookie'
 import Header from '../Header'
 import CartContext from '../../context/CartContext'
@@ -18,6 +19,8 @@ import {
   HomeContainer,
   HomeStickyContainer,
   HomeSideContainer,
+  VideosHeaderContainer,
+  Icons,
 } from './styledComponents'
 
 const apiStatusConstants = {
@@ -77,10 +80,21 @@ class GamingRoute extends Component {
         const {isDarkTheme} = value
         const {searchedVideos} = this.state
 
-        const bgColor = isDarkTheme ? '#231f20' : '#f4f4f4'
+        const bgColor = isDarkTheme ? '#181818' : '#f4f4f4'
+        const textColor = isDarkTheme ? '#f4f4f4' : '#231f20'
+        const headBgColor = isDarkTheme ? '#231f20' : '#d7dfe9'
+        const iconBgColor = isDarkTheme ? '#181818' : '#f4f4f4'
 
         return (
           <SearchVideosContainer bgColor={bgColor}>
+            <VideosHeaderContainer bgColor={headBgColor}>
+              <Icons size={30} color="#ff0000" iconBgColor={iconBgColor}>
+                <AiFillFire />
+              </Icons>
+              <Heading size={30} textColor={textColor}>
+                Gaming
+              </Heading>
+            </VideosHeaderContainer>
             <VideosContainer>
               {searchedVideos.map(each => (
                 <GamingVideoItem videoDetails={each} key={each.id} />
@@ -110,7 +124,9 @@ class GamingRoute extends Component {
                   : 'https://assets.ccbp.in/frontend/react-js/nxt-watch-not-found-dark-theme-img.png'
               }
             />
-            <Heading textColor={textColor}>Oops! Something Went Wrong</Heading>
+            <Heading textColor={textColor} size={20}>
+              Oops! Something Went Wrong
+            </Heading>
             <Desc>
               We are having some trouble to Complete your request. Please try
               again.
@@ -148,7 +164,7 @@ class GamingRoute extends Component {
           return (
             <div data-testid="gaming">
               <Header />
-              <HomeContainer bgColor={bgColor} data-testid="gaming">
+              <HomeContainer bgColor={bgColor} data-testid="home">
                 <HomeStickyContainer>
                   <SideBar />
                 </HomeStickyContainer>

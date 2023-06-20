@@ -1,10 +1,11 @@
 import {Component} from 'react'
 import Loader from 'react-loader-spinner'
+import {AiFillFire} from 'react-icons/ai'
 import Cookies from 'js-cookie'
 import Header from '../Header'
 import CartContext from '../../context/CartContext'
 import SideBar from '../SideBar'
-import TrendingVideoItem from '../GamingVideoItem'
+import TrendingVideoItem from '../TrendingVideoItem'
 
 import {
   PageLoader,
@@ -18,6 +19,8 @@ import {
   HomeContainer,
   HomeStickyContainer,
   HomeSideContainer,
+  VideosHeaderContainer,
+  Icons,
 } from './styledComponents'
 
 const apiStatusConstants = {
@@ -54,7 +57,12 @@ class TrendingRoute extends Component {
         id: eachVideo.id,
         title: eachVideo.title,
         thumbnailUrl: eachVideo.thumbnail_url,
+        channel: {
+          name: eachVideo.channel.name,
+          profileImageUrl: eachVideo.channel.profile_image_url,
+        },
         viewCount: eachVideo.view_count,
+        publishedAt: eachVideo.published_at,
       }))
       this.setState({
         searchedVideos: UpdatedVideos,
@@ -71,16 +79,27 @@ class TrendingRoute extends Component {
     </PageLoader>
   )
 
-  renderGamingVideos = () => (
+  renderTrendingVideos = () => (
     <CartContext.Consumer>
       {value => {
         const {isDarkTheme} = value
         const {searchedVideos} = this.state
 
-        const bgColor = isDarkTheme ? '#231f20' : '#f4f4f4'
+        const bgColor = isDarkTheme ? '#181818' : '#f4f4f4'
+        const textColor = isDarkTheme ? '#f4f4f4' : '#231f20'
+        const headBgColor = isDarkTheme ? '#231f20' : '#d7dfe9'
+        const iconBgColor = isDarkTheme ? '#181818' : '#f4f4f4'
 
         return (
           <SearchVideosContainer bgColor={bgColor}>
+            <VideosHeaderContainer bgColor={headBgColor}>
+              <Icons size={30} color="#ff0000" iconBgColor={iconBgColor}>
+                <AiFillFire />
+              </Icons>
+              <Heading size={30} textColor={textColor}>
+                Trending
+              </Heading>
+            </VideosHeaderContainer>
             <VideosContainer>
               {searchedVideos.map(each => (
                 <TrendingVideoItem videoDetails={each} key={each.id} />
@@ -128,7 +147,7 @@ class TrendingRoute extends Component {
     const {apiStatus} = this.state
     switch (apiStatus) {
       case apiStatusConstants.success:
-        return this.renderGamingVideos()
+        return this.renderTrendingVideos()
       case apiStatusConstants.inProgress:
         return this.renderLoadingView()
       case apiStatusConstants.failure:
@@ -146,9 +165,9 @@ class TrendingRoute extends Component {
           const bgColor = isDarkTheme ? '#231f20' : '#f4f4f4'
 
           return (
-            <div data-testid="home">
+            <div data-testid="trending">
               <Header />
-              <HomeContainer bgColor={bgColor}>
+              <HomeContainer bgColor={bgColor} data-testid="home">
                 <HomeStickyContainer>
                   <SideBar />
                 </HomeStickyContainer>

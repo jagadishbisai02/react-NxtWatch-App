@@ -41,7 +41,7 @@ export const VideoDetailsTextContainer = styled.div`
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
-  width: 95%;
+  width: 98%;
 `
 
 export const ViewDetailsContainer = styled.div`
@@ -85,8 +85,9 @@ export const HorizontalLine = styled.hr`
 `
 
 export const ChannelLogo = styled.img`
-  width: 50px;
-  height: 50px;
+  width: 55px;
+  height: 55px;
+  margin-top: 7px;
 `
 
 export const ChannelContainer = styled.div`

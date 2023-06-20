@@ -1,3 +1,4 @@
+import {formatDistanceToNow} from 'date-fns'
 import CartContext from '../../context/CartContext'
 
 import {
@@ -14,12 +15,12 @@ const TrendingVideoItem = props => {
   const {
     title,
     id,
-    channel,
     thumbnailUrl,
+    channel,
     viewCount,
     publishedAt,
   } = videoDetails
-  const {name, profileImageUrl} = channel
+  const {name} = channel
 
   return (
     <CartContext.Consumer>
@@ -40,7 +41,11 @@ const TrendingVideoItem = props => {
                     {title}
                   </VideoDetailsText>
                   <VideoDetailsText textColor={textColor} size={12}>
-                    {viewCount} views
+                    {name}
+                  </VideoDetailsText>
+                  <VideoDetailsText textColor={textColor} size={12}>
+                    {viewCount} views .{' '}
+                    {formatDistanceToNow(new Date(`${publishedAt}`))}
                   </VideoDetailsText>
                 </VideoDetailsContainer>
               </VideoCardBottomContainer>

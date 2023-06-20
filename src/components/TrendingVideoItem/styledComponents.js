@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom'
 
 export const NavLink = styled(Link)`
   text-decoration: none;
-  width: 33%;
+  width: 100%;
 `
 export const VideoDetailsText = styled.p`
   color: ${props => props.textColor};
@@ -13,17 +13,18 @@ export const VideoDetailsText = styled.p`
 `
 
 export const ThumbnailImage = styled.img`
-  width: 100%;
+  width: 35%;
 `
 export const VideoCardBottomContainer = styled.div`
   width: 100%;
   display: flex;
-  align-items: center;
+  justify-content: flex-start;
+  align-items: flex-start;
 `
 export const VideoCardContainer = styled.li`
   display: flex;
-  flex-direction: column;
-  width: 90%;
+  flex-direction: row;
+  width: 100%;
   cursor: pointer;
   margin: 25px;
 `
@@ -31,7 +32,7 @@ export const VideoCardContainer = styled.li`
 export const VideoDetailsContainer = styled.div`
   margin-bottom: 0px;
   margin-top: 0px;
-  padding: 0px;
+  padding-left: 18px;
 `
 
 export const ProfileContainer = styled.img`
