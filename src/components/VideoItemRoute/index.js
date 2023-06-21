@@ -125,7 +125,7 @@ class VideoDetails extends Component {
           if (isVideoSaved === true) {
             removeSaveVideos(id)
           } else {
-            addToSaveVideos({...videoDetails, videoSaved: true})
+            addToSaveVideos(videoDetails)
           }
         }
 

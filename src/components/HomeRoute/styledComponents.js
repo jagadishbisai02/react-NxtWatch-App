@@ -66,8 +66,6 @@ export const BannerImageContainer = styled.div`
   width: 100%;
   height: 40vh;
   padding: 25px;
-  position: sticky;
-  position: -webkit-sticky;
 `
 
 export const ModalPara = styled.p`

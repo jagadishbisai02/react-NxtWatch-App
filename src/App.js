@@ -1,5 +1,5 @@
 import {Component} from 'react'
-import {Route, Switch} from 'react-router-dom'
+import {Route, Switch, Redirect} from 'react-router-dom'
 import Login from './components/LoginRoute'
 import ProtectedRoute from './components/ProtectedRoute'
 import VideoDetails from './components/VideoItemRoute'
@@ -8,6 +8,7 @@ import TrendingRoute from './components/TrendingRoute'
 import HomeRoute from './components/HomeRoute'
 import CartContext from './context/CartContext'
 import SavedVideos from './components/SavedVideoRoute'
+import NotFound from './components/NotFound'
 import './App.css'
 
 // Replace your code here
@@ -24,7 +25,6 @@ class App extends Component {
 
   addToSaveVideos = videoDetails => {
     const {savedVideos} = this.state
-    console.log(savedVideos)
     const videoObject = savedVideos.find(each => each.id === videoDetails.id)
     console.log(videoObject)
 
@@ -44,8 +44,6 @@ class App extends Component {
   render() {
     const {isDarkTheme, savedVideos, activeTab} = this.state
 
-    console.log(savedVideos)
-
     return (
       <CartContext.Provider
         value={{
@@ -64,7 +62,9 @@ class App extends Component {
           <ProtectedRoute exact path="/trending" component={TrendingRoute} />
           <ProtectedRoute exact path="/gaming" component={GamingRoute} />
           <ProtectedRoute exact path="/videos/:id" component={VideoDetails} />
-          <ProtectedRoute exact path="saved-videos" component={SavedVideos} />
+          <ProtectedRoute exact path="/saved-videos" component={SavedVideos} />
+          <Route exact path="/not-found" component={NotFound} />
+          <Redirect to="/not-found" />
         </Switch>
       </CartContext.Provider>
     )

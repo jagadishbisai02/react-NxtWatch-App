@@ -32,11 +32,11 @@ export const ContentContainer = styled.ul`
 
 export const LogoutButton = styled.button`
   color: #ffffff;
-  background-color: #4f46e5;
+  background-color: ${props => props.bgBtnColor};
   font-size: 10px;
   font-weight: 600;
   font-family: 'Roboto';
-  border: none;
+  border: ${props => props.border};
   border-radius: 5px;
   padding: 8px 16px;
   cursor: pointer;

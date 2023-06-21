@@ -39,22 +39,19 @@ class SideBar extends Component {
           activeTabItem('SAVED VIDEOS')
         }
 
-        const bgColor = isDarkTheme ? '#ffffff' : '#000000'
-
         const textColor = isDarkTheme ? '#f9f9f9' : '#181818'
-
-        console.log()
 
         return (
           <SideBarContainer>
-            <NavItemsContainer>
+            <NavItemsContainer textColor={textColor}>
               <TextItemContainer
+                key="home"
                 isActive={activeTab === 'HOME' ? '#e2e8f0' : 'transparent'}
                 onClick={onClickHomeTab}
               >
                 <NavLink
                   to="/"
-                  color={activeTab === 'HOME' ? '#ff0000' : {bgColor}}
+                  color={activeTab === 'HOME' ? '#ff0000' : {textColor}}
                 >
                   <AiFillHome />
                   <ItemText
@@ -65,12 +62,13 @@ class SideBar extends Component {
                 </NavLink>
               </TextItemContainer>
               <TextItemContainer
+                key="trending"
                 isActive={activeTab === 'TRENDING' ? '#e2e8f0' : 'transparent'}
                 onClick={onClickTrendingTabItem}
               >
                 <NavLink
                   to="/trending"
-                  color={activeTab === 'TRENDING' ? '#ff0000' : {bgColor}}
+                  color={activeTab === 'TRENDING' ? '#ff0000' : {textColor}}
                 >
                   <AiFillFire />
                   <ItemText
@@ -81,12 +79,13 @@ class SideBar extends Component {
                 </NavLink>
               </TextItemContainer>
               <TextItemContainer
+                key="gaming"
                 isActive={activeTab === 'GAMING' ? '#e2e8f0' : 'transparent'}
                 onClick={onClickGamingTabItem}
               >
                 <NavLink
                   to="/gaming"
-                  color={activeTab === 'GAMING' ? '#ff0000' : {bgColor}}
+                  color={activeTab === 'GAMING' ? '#ff0000' : {textColor}}
                 >
                   <SiYoutubegaming />
                   <ItemText
@@ -97,15 +96,15 @@ class SideBar extends Component {
                 </NavLink>
               </TextItemContainer>
               <TextItemContainer
+                key="save"
                 isActive={
                   activeTab === 'SAVED VIDEOS' ? '#f1f5f9' : 'transparent'
                 }
-                isActiveColor={bgColor}
                 onClick={onClickSaveVideosTabItem}
               >
                 <NavLink
                   to="/saved-videos"
-                  color={activeTab === 'SAVED VIDEOS' ? '#ff0000' : {bgColor}}
+                  color={activeTab === 'SAVED VIDEOS' ? '#ff0000' : {textColor}}
                 >
                   <MdPlaylistAdd />
                   <ItemText
@@ -119,7 +118,7 @@ class SideBar extends Component {
               </TextItemContainer>
             </NavItemsContainer>
             <SideBarBottomContainer>
-              <BottomText>CONTACT US</BottomText>
+              <BottomText textColor={textColor}>CONTACT US</BottomText>
               <IconsContainer>
                 <IconImage
                   src="https://assets.ccbp.in/frontend/react-js/nxt-watch-facebook-logo-img.png"
@@ -134,7 +133,7 @@ class SideBar extends Component {
                   alt="linked in logo"
                 />
               </IconsContainer>
-              <BottomItemText color={textColor}>
+              <BottomItemText textColor={textColor}>
                 Enjoy! Now to see your channels and recommendations!
               </BottomItemText>
             </SideBarBottomContainer>

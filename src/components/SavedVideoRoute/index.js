@@ -27,21 +27,24 @@ class SavedVideos extends Component {
     <CartContext.Consumer>
       {value => {
         const {savedVideos, isDarkTheme} = value
+        console.log(savedVideos)
         const bgColor = isDarkTheme ? '#231f20' : '#f4f4f4'
         const textColor = isDarkTheme ? '#f4f4f4' : '#181818'
         const headBgColor = isDarkTheme ? '#231f20' : '#d7dfe9'
         const iconBgColor = isDarkTheme ? '#181818' : '#f4f4f4'
-
         const isVideoAvailable = savedVideos.length === 0
+        console.log(isDarkTheme)
 
         return isVideoAvailable ? (
           <NotFoundContainer bgColor={bgColor}>
             <Image
-              src="https://assets.ccbp.in/frontend/react-js/nxt-watch-no-search-results-img.png"
-              alt="no videos"
+              src="https://assets.ccbp.in/frontend/react-js/nxt-watch-no-saved-videos-img.png"
+              alt="no saved videos"
             />
             <Heading textColor={textColor}>No Saved videos found</Heading>
-            <Desc>Try different key words or remove search filter</Desc>
+            <Desc textColor={textColor}>
+              Try different key words or remove search filter
+            </Desc>
             <RetryButton type="button" onClick={this.getVideos}>
               Retry
             </RetryButton>

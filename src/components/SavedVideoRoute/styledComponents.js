@@ -28,15 +28,6 @@ export const HomeStickyContainer = styled.div`
   position: -webkit-sticky;
 `
 
-export const NothingContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background-color: ${props => props.bgColor};
-  padding-top: 90px;
-`
-
 export const Image = styled.img`
   width: 280px;
   height: 280px;
@@ -51,7 +42,7 @@ export const Heading = styled.h1`
 `
 
 export const Desc = styled.p`
-  color: #1e293b;
+  color: ${props => props.textColor};
   font-size: 15px;
   font-family: 'Roboto';
   line-height: 1.5;
@@ -72,7 +63,7 @@ export const RetryButton = styled.button`
 
 export const SearchVideosContainer = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   background-color: ${props => props.bgColor};
   padding: 15px;
 `
@@ -84,6 +75,7 @@ export const NotFoundContainer = styled.div`
   align-items: center;
   background-color: ${props => props.bgColor};
   padding-top: 90px;
+  height: 95vh;
 `
 
 export const VideosContainer = styled.ul`

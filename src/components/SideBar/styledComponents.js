@@ -13,6 +13,7 @@ export const SideBarContainer = styled.div`
 export const NavItemsContainer = styled.div`
   display: flex;
   flex-direction: column;
+  color: ${props => props.textColor};
 `
 
 export const TextItemContainer = styled.div`
@@ -33,9 +34,9 @@ margin-left: 10px;
 `
 
 export const BottomItemText = styled.p`
-font-family: 'Roboto';
-color: ${props => props.color}
-width: 100px;
+  font-family: 'Roboto';
+  color: ${props => props.textColor};
+  width: 100px;
 `
 
 export const SideBarBottomContainer = styled.div`
@@ -48,10 +49,10 @@ export const SideBarBottomContainer = styled.div`
 `
 
 export const BottomText = styled.p`
-font-family: 'Roboto';
-color: ${props => props.color}
-width: 140px;
-font-size: 20px;
+  font-family: 'Roboto';
+  color: ${props => props.textColor};
+  width: 140px;
+  font-size: 20px;
 `
 
 export const IconsContainer = styled.div`

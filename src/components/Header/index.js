@@ -43,6 +43,8 @@ const Header = props => {
         const websiteLogo = isDarkTheme
           ? 'https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-dark-theme-img.png'
           : 'https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-light-theme-img.png'
+        const border = isDarkTheme ? '1px solid #f9f9f9' : 'none'
+        const bgBtnColor = isDarkTheme ? 'transparent' : '#4f46e5'
 
         return (
           <NavHeader bgColor={bgColor}>
@@ -69,7 +71,12 @@ const Header = props => {
                 <Popup
                   modal
                   trigger={
-                    <LogoutButton type="button" data-testid="iconButton">
+                    <LogoutButton
+                      type="button"
+                      data-testid="iconButton"
+                      border={border}
+                      bgBtnColor={bgBtnColor}
+                    >
                       Logout
                     </LogoutButton>
                   }
