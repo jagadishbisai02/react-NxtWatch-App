@@ -39,10 +39,12 @@ class SideBar extends Component {
           activeTabItem('SAVED VIDEOS')
         }
 
+        const bgColor = isDarkTheme ? '#0f0f0f' : '#f9f9f9'
+
         const textColor = isDarkTheme ? '#f9f9f9' : '#181818'
 
         return (
-          <SideBarContainer>
+          <SideBarContainer bgColor={bgColor}>
             <NavItemsContainer textColor={textColor}>
               <TextItemContainer
                 key="home"

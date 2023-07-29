@@ -80,7 +80,7 @@ class GamingRoute extends Component {
         const {isDarkTheme} = value
         const {searchedVideos} = this.state
 
-        const bgColor = isDarkTheme ? '#181818' : '#f4f4f4'
+        const bgColor = isDarkTheme ? '#0f0f0f' : '#f4f4f4'
         const textColor = isDarkTheme ? '#f4f4f4' : '#231f20'
         const headBgColor = isDarkTheme ? '#231f20' : '#d7dfe9'
         const iconBgColor = isDarkTheme ? '#181818' : '#f4f4f4'
@@ -111,7 +111,7 @@ class GamingRoute extends Component {
       {value => {
         const {isDarkTheme} = value
 
-        const bgColor = isDarkTheme ? '#231f20' : '#f4f4f4'
+        const bgColor = isDarkTheme ? '#0f0f0f' : '#f4f4f4'
 
         const textColor = isDarkTheme ? '#231f20' : '#f9f9f9'
 
@@ -159,7 +159,7 @@ class GamingRoute extends Component {
       <CartContext.Consumer>
         {value => {
           const {isDarkTheme} = value
-          const bgColor = isDarkTheme ? '#231f20' : '#f4f4f4'
+          const bgColor = isDarkTheme ? '#0f0f0f' : '#f9f9f9'
 
           return (
             <div data-testid="gaming">

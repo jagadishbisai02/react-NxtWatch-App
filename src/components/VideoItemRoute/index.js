@@ -157,7 +157,7 @@ class VideoDetails extends Component {
           <AiOutlineDislike />
         )
 
-        const bgColor = isDarkTheme ? '#181818' : '#f1f1f1'
+        const bgColor = isDarkTheme ? '#0f0f0f' : '#f1f1f1'
         const textColor = isDarkTheme ? '#f1f1f1' : '#181818'
 
         const hrLine = isDarkTheme ? '#f1f1f1' : '#181818'
@@ -256,7 +256,7 @@ class VideoDetails extends Component {
       {value => {
         const {isDarkTheme} = value
 
-        const bgColor = isDarkTheme ? '#231f20' : '#f4f4f4'
+        const bgColor = isDarkTheme ? '#0f0f0f' : '#f4f4f4'
 
         const textColor = isDarkTheme ? '#f9f9f9' : '#231f20'
 
@@ -265,9 +265,10 @@ class VideoDetails extends Component {
             <Image
               src={
                 isDarkTheme
-                  ? 'https://assets.ccbp.in/frontend/react-js/nxt-watch-not-found-light-theme-img.png'
-                  : 'https://assets.ccbp.in/frontend/react-js/nxt-watch-not-found-dark-theme-img.png'
+                  ? 'https://assets.ccbp.in/frontend/react-js/nxt-watch-failure-view-light-theme-img.png'
+                  : 'https://assets.ccbp.in/frontend/react-js/nxt-watch-failure-view-dark-theme-img.png'
               }
+              alt="failure view"
             />
             <Heading textColor={textColor}>Oops! Something Went Wrong</Heading>
             <Desc>
@@ -303,7 +304,7 @@ class VideoDetails extends Component {
       <CartContext.Consumer>
         {value => {
           const {isDarkTheme} = value
-          const bgColor = isDarkTheme ? '#231f20' : '#f4f4f4'
+          const bgColor = isDarkTheme ? '#0f0f0f' : '#f4f4f4'
 
           return (
             <VideoDetailContainer bgColor={bgColor}>

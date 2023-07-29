@@ -27,9 +27,9 @@ const TrendingVideoItem = props => {
       {value => {
         const {isDarkTheme} = value
 
-        const bgColor = isDarkTheme ? '#181818' : '#f9f9f9'
+        const bgColor = isDarkTheme ? '#0f0f0f' : '#f9f9f9'
 
-        const textColor = isDarkTheme ? '#f9f9f9' : '#181818'
+        const textColor = isDarkTheme ? '#f9f9f9' : '#0f0f0f'
 
         return (
           <NavLink to={`videos/${id}`} bgColor={bgColor}>

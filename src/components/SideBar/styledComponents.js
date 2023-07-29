@@ -9,6 +9,7 @@ export const SideBarContainer = styled.div`
   height: 90vh;
   position: sticky;
   position: -webkit-sticky;
+  background-color: ${props => props.bgColor};
 `
 export const NavItemsContainer = styled.div`
   display: flex;

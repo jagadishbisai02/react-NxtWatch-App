@@ -28,7 +28,7 @@ class SavedVideos extends Component {
       {value => {
         const {savedVideos, isDarkTheme} = value
         console.log(savedVideos)
-        const bgColor = isDarkTheme ? '#231f20' : '#f4f4f4'
+        const bgColor = isDarkTheme ? '#0f0f0f' : '#f4f4f4'
         const textColor = isDarkTheme ? '#f4f4f4' : '#181818'
         const headBgColor = isDarkTheme ? '#231f20' : '#d7dfe9'
         const iconBgColor = isDarkTheme ? '#181818' : '#f4f4f4'
@@ -81,7 +81,7 @@ class SavedVideos extends Component {
       <CartContext.Consumer>
         {value => {
           const {isDarkTheme} = value
-          const bgColor = isDarkTheme ? '#181818' : '#f9f9f9'
+          const bgColor = isDarkTheme ? '#0f0f0f' : '#f9f9f9'
 
           return (
             <div data-testid="savedVideo">

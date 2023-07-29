@@ -102,7 +102,7 @@ class SearchVideos extends Component {
         const {isDarkTheme} = value
         const {searchedVideos} = this.state
 
-        const bgColor = isDarkTheme ? '#231f20' : '#f4f4f4'
+        const bgColor = isDarkTheme ? '#0f0f0f' : '#f4f4f4'
 
         const isVideoAvailable = searchedVideos.length === 0
 
@@ -136,7 +136,7 @@ class SearchVideos extends Component {
       {value => {
         const {isDarkTheme} = value
 
-        const bgColor = isDarkTheme ? '#231f20' : '#f4f4f4'
+        const bgColor = isDarkTheme ? '#0f0f0f' : '#f4f4f4'
 
         const textColor = isDarkTheme ? '#231f20' : '#f9f9f9'
 
@@ -145,9 +145,10 @@ class SearchVideos extends Component {
             <Image
               src={
                 isDarkTheme
-                  ? 'https://assets.ccbp.in/frontend/react-js/nxt-watch-not-found-light-theme-img.png'
-                  : 'https://assets.ccbp.in/frontend/react-js/nxt-watch-not-found-dark-theme-img.png'
+                  ? 'https://assets.ccbp.in/frontend/react-js/nxt-watch-failure-view-light-theme-img.png'
+                  : 'https://assets.ccbp.in/frontend/react-js/nxt-watch-failure-view-dark-theme-img.png'
               }
+              alt="failure view"
             />
             <Heading textColor={textColor}>Oops! Something Went Wrong</Heading>
             <Desc>
@@ -183,7 +184,7 @@ class SearchVideos extends Component {
       <CartContext.Consumer>
         {value => {
           const {isDarkTheme} = value
-          const bgColor = isDarkTheme ? '#231f20' : '#f4f4f4'
+          const bgColor = isDarkTheme ? '#0f0f0f' : '#f4f4f4'
 
           return (
             <>

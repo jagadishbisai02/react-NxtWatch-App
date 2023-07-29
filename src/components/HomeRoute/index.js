@@ -44,7 +44,7 @@ class HomeRoute extends Component {
             data-testid="close"
             onClick={this.onCloseBanner}
           >
-            <IoMdClose size={20} color="#231f20" />
+            <IoMdClose size={30} color="#231f20" />
           </CloseButton>
         </BannerImageContainer>
         <SearchVideos />
