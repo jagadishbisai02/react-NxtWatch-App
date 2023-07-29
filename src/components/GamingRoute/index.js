@@ -33,7 +33,7 @@ const apiStatusConstants = {
 class GamingRoute extends Component {
   state = {
     apiStatus: apiStatusConstants.initial,
-    searchedVideos: [],
+    gamingVideos: [],
   }
 
   componentDidMount() {
@@ -60,7 +60,7 @@ class GamingRoute extends Component {
         viewCount: eachVideo.view_count,
       }))
       this.setState({
-        searchedVideos: UpdatedVideos,
+        gamingVideos: UpdatedVideos,
         apiStatus: apiStatusConstants.success,
       })
     } else {
@@ -74,37 +74,17 @@ class GamingRoute extends Component {
     </PageLoader>
   )
 
-  renderGamingVideos = () => (
-    <CartContext.Consumer>
-      {value => {
-        const {isDarkTheme} = value
-        const {searchedVideos} = this.state
+  renderVideosView = () => {
+    const {gamingVideos} = this.state
 
-        const bgColor = isDarkTheme ? '#0f0f0f' : '#f4f4f4'
-        const textColor = isDarkTheme ? '#f4f4f4' : '#231f20'
-        const headBgColor = isDarkTheme ? '#231f20' : '#d7dfe9'
-        const iconBgColor = isDarkTheme ? '#181818' : '#f4f4f4'
-
-        return (
-          <SearchVideosContainer bgColor={bgColor}>
-            <VideosHeaderContainer bgColor={headBgColor}>
-              <Icons size={30} color="#ff0000" iconBgColor={iconBgColor}>
-                <AiFillFire />
-              </Icons>
-              <Heading size={30} textColor={textColor}>
-                Gaming
-              </Heading>
-            </VideosHeaderContainer>
-            <VideosContainer>
-              {searchedVideos.map(each => (
-                <GamingVideoItem videoDetails={each} key={each.id} />
-              ))}
-            </VideosContainer>
-          </SearchVideosContainer>
-        )
-      }}
-    </CartContext.Consumer>
-  )
+    return (
+      <VideosContainer>
+        {gamingVideos.map(each => (
+          <GamingVideoItem videoDetails={each} key={each.id} />
+        ))}
+      </VideosContainer>
+    )
+  }
 
   renderFailureView = () => (
     <CartContext.Consumer>
@@ -144,7 +124,7 @@ class GamingRoute extends Component {
     const {apiStatus} = this.state
     switch (apiStatus) {
       case apiStatusConstants.success:
-        return this.renderGamingVideos()
+        return this.renderVideosView()
       case apiStatusConstants.inProgress:
         return this.renderLoadingView()
       case apiStatusConstants.failure:
@@ -160,15 +140,32 @@ class GamingRoute extends Component {
         {value => {
           const {isDarkTheme} = value
           const bgColor = isDarkTheme ? '#0f0f0f' : '#f9f9f9'
+          const textColor = isDarkTheme ? '#f9f9f9' : '#231f20'
+          const headBgColor = isDarkTheme ? '#231f20' : '#d7dfe9'
+          const iconBgColor = isDarkTheme ? '#181818' : '#f4f4f4'
 
           return (
-            <div data-testid="gaming">
+            <div>
               <Header />
               <HomeContainer bgColor={bgColor} data-testid="home">
                 <HomeStickyContainer>
                   <SideBar />
                 </HomeStickyContainer>
-                <HomeSideContainer bgColor={bgColor}>
+                <HomeSideContainer data-testid="gaming" bgColor={bgColor}>
+                  <SearchVideosContainer bgColor={bgColor}>
+                    <VideosHeaderContainer bgColor={headBgColor}>
+                      <Icons
+                        size={30}
+                        color="#ff0000"
+                        iconBgColor={iconBgColor}
+                      >
+                        <AiFillFire />
+                      </Icons>
+                      <Heading size={30} textColor={textColor}>
+                        Gaming
+                      </Heading>
+                    </VideosHeaderContainer>
+                  </SearchVideosContainer>
                   {this.renderAllVideos()}
                 </HomeSideContainer>
               </HomeContainer>
