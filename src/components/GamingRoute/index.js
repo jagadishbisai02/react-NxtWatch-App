@@ -6,14 +6,11 @@ import Header from '../Header'
 import CartContext from '../../context/CartContext'
 import SideBar from '../SideBar'
 import GamingVideoItem from '../GamingVideoItem'
+import FailureView from '../FailureView'
 
 import {
   PageLoader,
-  NotFoundContainer,
-  Image,
   Heading,
-  Desc,
-  RetryButton,
   SearchVideosContainer,
   VideosContainer,
   HomeContainer,
@@ -86,39 +83,11 @@ class GamingRoute extends Component {
     )
   }
 
-  renderFailureView = () => (
-    <CartContext.Consumer>
-      {value => {
-        const {isDarkTheme} = value
+  onRetry = () => {
+    this.getVideos()
+  }
 
-        const bgColor = isDarkTheme ? '#0f0f0f' : '#f4f4f4'
-
-        const textColor = isDarkTheme ? '#231f20' : '#f9f9f9'
-
-        return (
-          <NotFoundContainer bgColor={bgColor}>
-            <Image
-              src={
-                isDarkTheme
-                  ? 'https://assets.ccbp.in/frontend/react-js/nxt-watch-not-found-light-theme-img.png'
-                  : 'https://assets.ccbp.in/frontend/react-js/nxt-watch-not-found-dark-theme-img.png'
-              }
-            />
-            <Heading textColor={textColor} size={20}>
-              Oops! Something Went Wrong
-            </Heading>
-            <Desc>
-              We are having some trouble to Complete your request. Please try
-              again.
-            </Desc>
-            <RetryButton type="button" onClick={this.getVideos}>
-              Retry
-            </RetryButton>
-          </NotFoundContainer>
-        )
-      }}
-    </CartContext.Consumer>
-  )
+  renderFailureView = () => <FailureView onRetry={this.onRetry} />
 
   renderAllVideos = () => {
     const {apiStatus} = this.state
