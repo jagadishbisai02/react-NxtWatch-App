@@ -5,6 +5,7 @@ import {SiYoutubegaming} from 'react-icons/si'
 import CartContext from '../../context/CartContext'
 
 import {
+  Nav,
   SideBarContainer,
   NavItemsContainer,
   TextItemContainer,
@@ -22,6 +23,9 @@ class SideBar extends Component {
     <CartContext.Consumer>
       {value => {
         const {activeTabItem, activeTab, isDarkTheme} = value
+        const bgColor = isDarkTheme ? '#0f0f0f' : '#f9f9f9'
+        const activeTabBag = isDarkTheme ? '#475569' : '#cbd5e1'
+        const textColor = isDarkTheme ? '#f9f9f9' : '#181818'
 
         const onClickHomeTab = () => {
           activeTabItem('HOME')
@@ -39,107 +43,92 @@ class SideBar extends Component {
           activeTabItem('SAVED VIDEOS')
         }
 
-        const bgColor = isDarkTheme ? '#0f0f0f' : '#f9f9f9'
-
-        const textColor = isDarkTheme ? '#f9f9f9' : '#181818'
-
         return (
-          <SideBarContainer bgColor={bgColor}>
-            <NavItemsContainer textColor={textColor}>
-              <TextItemContainer
-                key="home"
-                isActive={activeTab === 'HOME' ? '#e2e8f0' : 'transparent'}
-                onClick={onClickHomeTab}
-              >
-                <NavLink
-                  to="/"
-                  color={activeTab === 'HOME' ? '#ff0000' : {textColor}}
-                >
-                  <AiFillHome />
-                  <ItemText
-                    color={activeTab === 'HOME' ? '#ff0000' : {textColor}}
+          <Nav>
+            <SideBarContainer bgColor={bgColor}>
+              <NavItemsContainer>
+                <NavLink to="/">
+                  <TextItemContainer
+                    key="home"
+                    isActive={activeTab === 'HOME' ? activeTabBag : 'none'}
+                    onClick={onClickHomeTab}
                   >
-                    Home
-                  </ItemText>
+                    <AiFillHome
+                      size={30}
+                      color={activeTab === 'HOME' ? '#ff0000' : '#909090'}
+                    />
+                    <ItemText textColor={textColor}>Home</ItemText>
+                  </TextItemContainer>
                 </NavLink>
-              </TextItemContainer>
-              <TextItemContainer
-                key="trending"
-                isActive={activeTab === 'TRENDING' ? '#e2e8f0' : 'transparent'}
-                onClick={onClickTrendingTabItem}
-              >
-                <NavLink
-                  to="/trending"
-                  color={activeTab === 'TRENDING' ? '#ff0000' : {textColor}}
-                >
-                  <AiFillFire />
-                  <ItemText
-                    color={activeTab === 'TRENDING' ? '#ff0000' : {textColor}}
+
+                <NavLink to="/trending">
+                  <TextItemContainer
+                    key="trending"
+                    isActive={activeTab === 'TRENDING' ? activeTabBag : 'none'}
+                    onClick={onClickTrendingTabItem}
                   >
-                    Trending
-                  </ItemText>
+                    <AiFillFire
+                      size={30}
+                      color={activeTab === 'TRENDING' ? '#ff0000' : '#909090'}
+                    />
+                    <ItemText textColor={textColor}>Trending</ItemText>
+                  </TextItemContainer>
                 </NavLink>
-              </TextItemContainer>
-              <TextItemContainer
-                key="gaming"
-                isActive={activeTab === 'GAMING' ? '#e2e8f0' : 'transparent'}
-                onClick={onClickGamingTabItem}
-              >
+
                 <NavLink
                   to="/gaming"
-                  color={activeTab === 'GAMING' ? '#ff0000' : {textColor}}
+                  color={activeTab === 'GAMING' ? '#ff0000' : '#909090'}
                 >
-                  <SiYoutubegaming />
-                  <ItemText
-                    color={activeTab === 'GAMING' ? '#ff0000' : {textColor}}
+                  <TextItemContainer
+                    key="gaming"
+                    isActive={activeTab === 'GAMING' ? activeTabBag : 'none'}
+                    onClick={onClickGamingTabItem}
                   >
-                    Gaming
-                  </ItemText>
+                    <SiYoutubegaming
+                      size={30}
+                      color={activeTab === 'GAMING' ? '#ff0000' : '#909090'}
+                    />
+                    <ItemText textColor={textColor}>Gaming</ItemText>
+                  </TextItemContainer>
                 </NavLink>
-              </TextItemContainer>
-              <TextItemContainer
-                key="save"
-                isActive={
-                  activeTab === 'SAVED VIDEOS' ? '#f1f5f9' : 'transparent'
-                }
-                onClick={onClickSaveVideosTabItem}
-              >
                 <NavLink
                   to="/saved-videos"
-                  color={activeTab === 'SAVED VIDEOS' ? '#ff0000' : {textColor}}
+                  color={activeTab === 'SAVED VIDEOS' ? '#ff0000' : '#909090'}
                 >
-                  <MdPlaylistAdd />
-                  <ItemText
-                    color={
-                      activeTab === 'SAVED VIDEOS' ? '#ff0000' : {textColor}
+                  <TextItemContainer
+                    key="save"
+                    isActive={
+                      activeTab === 'SAVED VIDEOS' ? activeTabBag : 'none'
                     }
+                    onClick={onClickSaveVideosTabItem}
                   >
-                    Saved Videos
-                  </ItemText>
+                    <MdPlaylistAdd />
+                    <ItemText textColor={textColor}>Saved Videos</ItemText>
+                  </TextItemContainer>
                 </NavLink>
-              </TextItemContainer>
-            </NavItemsContainer>
-            <SideBarBottomContainer>
-              <BottomText textColor={textColor}>CONTACT US</BottomText>
-              <IconsContainer>
-                <IconImage
-                  src="https://assets.ccbp.in/frontend/react-js/nxt-watch-facebook-logo-img.png"
-                  alt="facebook logo"
-                />
-                <IconImage
-                  src="https://assets.ccbp.in/frontend/react-js/nxt-watch-twitter-logo-img.png"
-                  alt="twitter logo"
-                />
-                <IconImage
-                  src="https://assets.ccbp.in/frontend/react-js/nxt-watch-linked-in-logo-img.png"
-                  alt="linked in logo"
-                />
-              </IconsContainer>
-              <BottomItemText textColor={textColor}>
-                Enjoy! Now to see your channels and recommendations!
-              </BottomItemText>
-            </SideBarBottomContainer>
-          </SideBarContainer>
+              </NavItemsContainer>
+              <SideBarBottomContainer>
+                <BottomText textColor={textColor}>CONTACT US</BottomText>
+                <IconsContainer>
+                  <IconImage
+                    src="https://assets.ccbp.in/frontend/react-js/nxt-watch-facebook-logo-img.png"
+                    alt="facebook logo"
+                  />
+                  <IconImage
+                    src="https://assets.ccbp.in/frontend/react-js/nxt-watch-twitter-logo-img.png"
+                    alt="twitter logo"
+                  />
+                  <IconImage
+                    src="https://assets.ccbp.in/frontend/react-js/nxt-watch-linked-in-logo-img.png"
+                    alt="linked in logo"
+                  />
+                </IconsContainer>
+                <BottomItemText textColor={textColor}>
+                  Enjoy! Now to see your channels and recommendations!
+                </BottomItemText>
+              </SideBarBottomContainer>
+            </SideBarContainer>
+          </Nav>
         )
       }}
     </CartContext.Consumer>

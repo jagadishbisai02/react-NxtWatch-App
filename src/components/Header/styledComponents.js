@@ -1,13 +1,14 @@
 import styled from 'styled-components/macro'
 
 export const NavHeader = styled.nav`
+  width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   padding-left: 15px;
   padding-right: 15px;
-  position: sticky;
+  position: fixed;
   scroll-behavior: smooth;
   background-color: ${props => props.bgColor};
   @media screen and (max-width: 768px;) {

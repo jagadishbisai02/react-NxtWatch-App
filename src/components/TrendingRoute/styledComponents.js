@@ -1,46 +1,32 @@
 import styled from 'styled-components/macro'
 
-export const HomeContainer = styled.div`
-  width: 100vw;
-  display: flex;
-  flex-direction: row;
+export const TrendingContainer = styled.div`
+  margin-top: 60px;
+  margin-bottom: 60px;
+  overflow-y: auto;
   background-color: ${props => props.bgColor};
-  height: 95vh;
+  min-height: 100vh;
+  @media screen and (min-width: 768px) {
+    margin-left: 250px;
+    margin-bottom: 0px;
+  }
 `
 
-export const VideosHeaderContainer = styled.div`
+export const TitleIconContainer = styled.div`
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
-  align-items: flex-start;
-  background-color: ${props => props.bgColor};
-  padding-left: 25px;
-`
-
-export const Icons = styled.div`
-  display: flex;
   justify-content: center;
-  margin-top: 16px;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 80px;
+  margin-left: 10px;
   margin-right: 10px;
-  margin-left: 15px;
-  font-size: ${props => props.size}px;
-  color: ${props => props.color};
-  background-color: ${props => props.iconBgColor};
-  border-radius: 50px;
-  padding: 10px;
+  @media screen and (min-width: 768px) {
+    margin-left: 35px;
+  }
 `
 
-export const HomeSideContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  overflow-y: scroll;
-  width: 95%;
-  background-color: ${props => props.bgColor};
-`
-export const HomeStickyContainer = styled.div`
-  position: sticky;
-  position: -webkit-sticky;
-`
 export const PageLoader = styled.div`
   display: flex;
   justify-content: center;
@@ -48,58 +34,28 @@ export const PageLoader = styled.div`
   height: 80vh;
 `
 
-export const NotFoundContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background-color: ${props => props.bgColor};
-  padding-top: 90px;
-`
-
-export const Image = styled.img`
-  width: 280px;
-  height: 280px;
-`
-
-export const Heading = styled.h1`
-  font-size: ${props => props.size}px;
+export const TrendingText = styled.h1`
+  font-size: 25px;
   font-family: 'Roboto';
-  font-weight: 600;
   color: ${props => props.textColor};
-  line-height: 1.5;
+  @media screen and (min-width: 768px) {
+    font-size: 35px;
+  }
 `
 
-export const Desc = styled.p`
-  color: #1e293b;
-  font-size: 15px;
-  font-family: 'Roboto';
-  line-height: 1.5;
-`
-
-export const RetryButton = styled.button`
-  color: #f9f9f9;
-  background-color: #4f46e5;
-  padding: 12px 32px;
-  font-family: 'Roboto';
-  font-size: 14px;
-  font-weight: 600;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  outline: none;
-`
-
-export const SearchVideosContainer = styled.div`
+export const TrendingVideoTitle = styled.div`
   display: flex;
-  flex-direction: column;
-  background-color: ${props => props.bgColor};
+  align-items: center;
+  background-color: ${props => props.headBgColor};
 `
 
-export const VideosContainer = styled.ul`
+export const TrendingVideoList = styled.ul`
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   flex-wrap: wrap;
   list-style-type: none;
-  padding-left: 0px;
+  padding: 0px;
+  @media screen and (min-width: 768px) {
+    margin-left: 25px;
+  }
 `

@@ -1,37 +1,45 @@
 import styled from 'styled-components/macro'
 import {Link} from 'react-router-dom'
 
+export const Nav = styled.div`
+  display: flex;
+`
+
 export const SideBarContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 300px;
-  height: 90vh;
-  position: sticky;
-  position: -webkit-sticky;
+  width: 250px;
+  height: 92%;
+  position: fixed;
+  top: 60px;
   background-color: ${props => props.bgColor};
+  @media screen and(max-width:768px) {
+    display: none;
+  }
 `
-export const NavItemsContainer = styled.div`
+export const NavItemsContainer = styled.ul`
   display: flex;
   flex-direction: column;
+  flex-grow: 1;
+  list-style-type: none;
+  padding: 0px;
+  margin-top: 0px;
   color: ${props => props.textColor};
 `
 
-export const TextItemContainer = styled.div`
+export const TextItemContainer = styled.li`
   display: flex;
-  justify-content: space-between;
   align-items: center;
   cursor: pointer;
-  margin-top: 0px;
-  padding-left: 15px;
-  width: 100%;
+  padding-left: 20px;
   background-color: ${props => props.isActive};
 `
 export const ItemText = styled.p`
 font-family: 'Roboto';
-color: ${props => props.color}
-width: 100px;
-margin-left: 10px;
+color: ${props => props.textColor}
+font-size: 18px;
+margin-left: 15px;
 `
 
 export const BottomItemText = styled.p`
@@ -43,39 +51,29 @@ export const BottomItemText = styled.p`
 export const SideBarBottomContainer = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
-  height: 100px;
-  padding-left: 15px;
+  padding-left: 20px;
 `
 
 export const BottomText = styled.p`
   font-family: 'Roboto';
   color: ${props => props.textColor};
-  width: 140px;
-  font-size: 20px;
+  font-size: 25px;
 `
 
 export const IconsContainer = styled.div`
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  align-items: center;
 `
 
 export const IconImage = styled.img`
-  width: 30px;
-  height: 30px;
-  margin-right: 15px;
+  width: 25px;
+  height: 25px;
+  border-radius: 50px;
+  margin-right: 10px;
   cursor: pointer;
 `
 
 export const NavLink = styled(Link)`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   text-decoration: none;
-  font-size: 15px;
-  font-weight: 500;
-  margin-bottom: 15px;
-  color: ${props => props.color};
 `

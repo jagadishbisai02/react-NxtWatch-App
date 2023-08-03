@@ -2,12 +2,14 @@ import {formatDistanceToNow} from 'date-fns'
 import CartContext from '../../context/CartContext'
 
 import {
-  NavLink,
-  VideoCardContainer,
-  ThumbnailImage,
-  VideoDetailsContainer,
-  VideoCardBottomContainer,
-  VideoDetailsText,
+  ItemLink,
+  TrendingListItem,
+  TrendingThumbnailImage,
+  TrendingContentSection,
+  TrendingTitle,
+  TrendingChannelName,
+  TrendingViewsAndDate,
+  TrendingDot,
 } from './styledComponents'
 
 const TrendingVideoItem = props => {
@@ -26,31 +28,29 @@ const TrendingVideoItem = props => {
     <CartContext.Consumer>
       {value => {
         const {isDarkTheme} = value
-
-        const bgColor = isDarkTheme ? '#0f0f0f' : '#f9f9f9'
-
         const textColor = isDarkTheme ? '#f9f9f9' : '#0f0f0f'
 
         return (
-          <NavLink to={`videos/${id}`} bgColor={bgColor}>
-            <VideoCardContainer>
-              <ThumbnailImage src={thumbnailUrl} alt="video thumbnail" />
-              <VideoCardBottomContainer>
-                <VideoDetailsContainer>
-                  <VideoDetailsText textColor={textColor} size={16}>
-                    {title}
-                  </VideoDetailsText>
-                  <VideoDetailsText textColor={textColor} size={12}>
-                    {name}
-                  </VideoDetailsText>
-                  <VideoDetailsText textColor={textColor} size={12}>
-                    {viewCount} views .{' '}
-                    {formatDistanceToNow(new Date(`${publishedAt}`))}
-                  </VideoDetailsText>
-                </VideoDetailsContainer>
-              </VideoCardBottomContainer>
-            </VideoCardContainer>
-          </NavLink>
+          <ItemLink to={`videos/${id}`} className="link">
+            <TrendingListItem>
+              <TrendingThumbnailImage
+                src={thumbnailUrl}
+                alt="video thumbnail"
+              />
+              <TrendingContentSection>
+                <TrendingTitle textColor={textColor} size={16}>
+                  {title}
+                </TrendingTitle>
+                <TrendingChannelName textColor={textColor} size={12}>
+                  {name}
+                </TrendingChannelName>
+                <TrendingViewsAndDate textColor={textColor} size={12}>
+                  {viewCount} views <TrendingDot>&#8226; </TrendingDot>
+                  {formatDistanceToNow(new Date(`${publishedAt}`))}
+                </TrendingViewsAndDate>
+              </TrendingContentSection>
+            </TrendingListItem>
+          </ItemLink>
         )
       }}
     </CartContext.Consumer>

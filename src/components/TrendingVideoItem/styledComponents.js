@@ -1,44 +1,59 @@
 import styled from 'styled-components/macro'
 import {Link} from 'react-router-dom'
 
-export const NavLink = styled(Link)`
+export const ItemLink = styled(Link)`
   text-decoration: none;
-  width: 100%;
 `
-export const VideoDetailsText = styled.p`
+export const TrendingTitle = styled.p`
   color: ${props => props.textColor};
   font-family: 'Roboto';
-  font-size: ${props => props.size}px;
-  margin-bottom: 5px;
+  font-size: 15px;
 `
 
-export const ThumbnailImage = styled.img`
-  width: 35%;
+export const TrendingThumbnailImage = styled.img`
+  width: 100%;
+  @media screen and (min-width: 768px) {
+    width: 300px;
+  }
 `
-export const VideoCardBottomContainer = styled.div`
+export const TrendingContentSection = styled.div`
   width: 100%;
   display: flex;
+  flex-direction: column;
   justify-content: flex-start;
-  align-items: flex-start;
+  padding: 8px;
+  @media screen and (min-width: 768px) {
+    margin-left: 20px;
+  }
 `
-export const VideoCardContainer = styled.li`
+export const TrendingListItem = styled.li`
+  background: none;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  align-items: center;
   width: 100%;
-  cursor: pointer;
-  margin: 25px;
+  margin-bottom: 20px;
+  @media screen and (min-width: 768px) {
+    flex-direction: row;
+    margin-left: 40px;
+  }
 `
 
-export const VideoDetailsContainer = styled.div`
-  margin-bottom: 0px;
-  margin-top: 0px;
-  padding-left: 18px;
+export const TrendingViewsAndDate = styled.p`
+  color: ${props => props.textColor};
+  font-family: 'Roboto';
+  font-size: 12px;
 `
 
-export const ProfileContainer = styled.img`
-  width: 20%;
-  border-radius: 25%;
-  align-self: flex-start;
-  padding-top: 23px;
-  margin-right: 5px;
+export const TrendingChannelName = styled.p`
+  color: ${props => props.textColor};
+  font-family: 'Roboto';
+  font-size: 13px;
+`
+
+export const TrendingDot = styled.span`
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  padding: 8px 0px;
 `

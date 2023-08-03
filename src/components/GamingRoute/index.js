@@ -9,15 +9,12 @@ import GamingVideoItem from '../GamingVideoItem'
 import FailureView from '../FailureView'
 
 import {
+  GamingContainer,
+  GamingTitleIconContainer,
+  GamingVideoTitle,
+  GamingVideoList,
+  GamingText,
   PageLoader,
-  Heading,
-  SearchVideosContainer,
-  VideosContainer,
-  HomeContainer,
-  HomeStickyContainer,
-  HomeSideContainer,
-  VideosHeaderContainer,
-  Icons,
 } from './styledComponents'
 
 const apiStatusConstants = {
@@ -75,11 +72,11 @@ class GamingRoute extends Component {
     const {gamingVideos} = this.state
 
     return (
-      <VideosContainer>
+      <GamingVideoList>
         {gamingVideos.map(each => (
           <GamingVideoItem videoDetails={each} key={each.id} />
         ))}
-      </VideosContainer>
+      </GamingVideoList>
     )
   }
 
@@ -110,34 +107,20 @@ class GamingRoute extends Component {
           const {isDarkTheme} = value
           const bgColor = isDarkTheme ? '#0f0f0f' : '#f9f9f9'
           const textColor = isDarkTheme ? '#f9f9f9' : '#231f20'
-          const headBgColor = isDarkTheme ? '#231f20' : '#d7dfe9'
-          const iconBgColor = isDarkTheme ? '#181818' : '#f4f4f4'
-
+          const headBgColor = isDarkTheme ? '#181818' : '#94a3b8'
           return (
             <div>
               <Header />
-              <HomeContainer bgColor={bgColor} data-testid="home">
-                <HomeStickyContainer>
-                  <SideBar />
-                </HomeStickyContainer>
-                <HomeSideContainer data-testid="gaming" bgColor={bgColor}>
-                  <SearchVideosContainer bgColor={bgColor}>
-                    <VideosHeaderContainer bgColor={headBgColor}>
-                      <Icons
-                        size={30}
-                        color="#ff0000"
-                        iconBgColor={iconBgColor}
-                      >
-                        <AiFillFire />
-                      </Icons>
-                      <Heading size={30} textColor={textColor}>
-                        Gaming
-                      </Heading>
-                    </VideosHeaderContainer>
-                  </SearchVideosContainer>
-                  {this.renderAllVideos()}
-                </HomeSideContainer>
-              </HomeContainer>
+              <SideBar />
+              <GamingContainer data-testid="gaming" bgColor={bgColor}>
+                <GamingVideoTitle headBgColor={headBgColor}>
+                  <GamingTitleIconContainer>
+                    <AiFillFire size={35} color="#ff0000" />
+                  </GamingTitleIconContainer>
+                  <GamingText textColor={textColor}>Gaming</GamingText>
+                </GamingVideoTitle>
+                {this.renderAllVideos()}
+              </GamingContainer>
             </div>
           )
         }}

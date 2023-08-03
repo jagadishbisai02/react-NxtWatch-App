@@ -4,7 +4,7 @@ const CartContext = React.createContext({
   isDarkTheme: false,
   onChangeTheme: () => {},
   savedVideos: [],
-  addToSavedVideos: () => {},
+  addVideo: () => {},
   removeSavedVideos: () => {},
   activeTab: '',
   activeTabItem: () => {},

@@ -23,10 +23,9 @@ class App extends Component {
     this.setState({activeTab: item})
   }
 
-  addToSaveVideos = videoDetails => {
+  addVideo = videoDetails => {
     const {savedVideos} = this.state
     const videoObject = savedVideos.find(each => each.id === videoDetails.id)
-    console.log(videoObject)
 
     if (videoObject) {
       this.setState(prev => ({savedVideos: [...prev.savedVideos]}))
@@ -50,7 +49,7 @@ class App extends Component {
           isDarkTheme,
           onChangeTheme: this.onChangeTheme,
           savedVideos,
-          addToSaveVideos: this.addToSaveVideos,
+          addVideo: this.addVideo,
           removeSaveVideos: this.removeSaveVideos,
           activeTab,
           activeTabItem: this.activeTabItem,

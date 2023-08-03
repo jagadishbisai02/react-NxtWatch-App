@@ -1,37 +1,45 @@
 import styled from 'styled-components/macro'
 import {Link} from 'react-router-dom'
 
-export const NavLink = styled(Link)`
+export const ItemLink = styled(Link)`
   text-decoration: none;
-  width: 33%;
 `
-export const VideoDetailsText = styled.p`
+export const GamingTitle = styled.p`
   color: ${props => props.textColor};
   font-family: 'Roboto';
-  font-size: ${props => props.size}px;
-  margin-bottom: 5px;
+  font-size: 15px;
+  margin-bottom: 0px;
 `
 
-export const ThumbnailImage = styled.img`
-  width: 100%;
+export const GamingThumbnailImage = styled.img`
+  width: 100vw;
+  height: 300px;
+  align-self: center;
+  @media screen and (min-width: 768px) {
+    width: 280px;
+  }
 `
-export const VideoCardBottomContainer = styled.div`
-  width: 100%;
+export const GamingListItem = styled.li`
+  background: none
   display: flex;
   align-items: center;
+  width: 100%;
+  @media screen and (min-width:768px){
+      width:280px;
+      margin-right: 35px;
+  }
 `
-export const VideoCardContainer = styled.li`
+export const GamingContentSection = styled.div`
   display: flex;
   flex-direction: column;
-  width: 90%;
-  cursor: pointer;
-  margin: 25px;
+  justify-content: flex-start
+  padding: 8px;
 `
 
-export const VideoDetailsContainer = styled.div`
-  margin-bottom: 0px;
-  margin-top: 0px;
-  padding: 0px;
+export const GamingViewsAndDate = styled.p`
+  color: ${props => props.textColor};
+  font-family: 'Roboto';
+  font-size: 12px;
 `
 
 export const ProfileContainer = styled.img`

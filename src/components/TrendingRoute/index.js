@@ -6,21 +6,15 @@ import Header from '../Header'
 import CartContext from '../../context/CartContext'
 import SideBar from '../SideBar'
 import TrendingVideoItem from '../TrendingVideoItem'
+import FailureView from '../FailureView'
 
 import {
   PageLoader,
-  NotFoundContainer,
-  Image,
-  Heading,
-  Desc,
-  RetryButton,
-  SearchVideosContainer,
-  VideosContainer,
-  HomeContainer,
-  HomeStickyContainer,
-  HomeSideContainer,
-  VideosHeaderContainer,
-  Icons,
+  TrendingContainer,
+  TrendingVideoTitle,
+  TrendingVideoList,
+  TitleIconContainer,
+  TrendingText,
 } from './styledComponents'
 
 const apiStatusConstants = {
@@ -33,7 +27,7 @@ const apiStatusConstants = {
 class TrendingRoute extends Component {
   state = {
     apiStatus: apiStatusConstants.initial,
-    searchedVideos: [],
+    trendingVideos: [],
   }
 
   componentDidMount() {
@@ -65,7 +59,7 @@ class TrendingRoute extends Component {
         publishedAt: eachVideo.published_at,
       }))
       this.setState({
-        searchedVideos: UpdatedVideos,
+        trendingVideos: UpdatedVideos,
         apiStatus: apiStatusConstants.success,
       })
     } else {
@@ -79,76 +73,29 @@ class TrendingRoute extends Component {
     </PageLoader>
   )
 
-  renderTrendingVideos = () => (
-    <CartContext.Consumer>
-      {value => {
-        const {isDarkTheme} = value
-        const {searchedVideos} = this.state
+  renderVideosView = () => {
+    const {trendingVideos} = this.state
 
-        const bgColor = isDarkTheme ? '#0f0f0f' : '#f4f4f4'
-        const textColor = isDarkTheme ? '#f4f4f4' : '#231f20'
-        const headBgColor = isDarkTheme ? '#231f20' : '#d7dfe9'
-        const iconBgColor = isDarkTheme ? '#181818' : '#f4f4f4'
+    return (
+      <TrendingVideoList>
+        {trendingVideos.map(each => (
+          <TrendingVideoItem videoDetails={each} key={each.id} />
+        ))}
+      </TrendingVideoList>
+    )
+  }
 
-        return (
-          <SearchVideosContainer bgColor={bgColor}>
-            <VideosHeaderContainer bgColor={headBgColor}>
-              <Icons size={30} color="#ff0000" iconBgColor={iconBgColor}>
-                <AiFillFire />
-              </Icons>
-              <Heading size={30} textColor={textColor}>
-                Trending
-              </Heading>
-            </VideosHeaderContainer>
-            <VideosContainer>
-              {searchedVideos.map(each => (
-                <TrendingVideoItem videoDetails={each} key={each.id} />
-              ))}
-            </VideosContainer>
-          </SearchVideosContainer>
-        )
-      }}
-    </CartContext.Consumer>
-  )
+  onRetry = () => {
+    this.getVideos()
+  }
 
-  renderFailureView = () => (
-    <CartContext.Consumer>
-      {value => {
-        const {isDarkTheme} = value
+  renderFailureView = () => <FailureView onRetry={this.onRetry} />
 
-        const bgColor = isDarkTheme ? '#0f0f0f' : '#f4f4f4'
-
-        const textColor = isDarkTheme ? '#231f20' : '#f9f9f9'
-
-        return (
-          <NotFoundContainer bgColor={bgColor}>
-            <Image
-              src={
-                isDarkTheme
-                  ? 'https://assets.ccbp.in/frontend/react-js/nxt-watch-failure-view-light-theme-img.png'
-                  : 'https://assets.ccbp.in/frontend/react-js/nxt-watch-failure-view-dark-theme-img.png'
-              }
-              alt="failure view"
-            />
-            <Heading textColor={textColor}>Oops! Something Went Wrong</Heading>
-            <Desc>
-              We are having some trouble to Complete your request. Please try
-              again.
-            </Desc>
-            <RetryButton type="button" onClick={this.getVideos}>
-              Retry
-            </RetryButton>
-          </NotFoundContainer>
-        )
-      }}
-    </CartContext.Consumer>
-  )
-
-  renderAllVideos = () => {
+  renderTrendingVideos = () => {
     const {apiStatus} = this.state
     switch (apiStatus) {
       case apiStatusConstants.success:
-        return this.renderTrendingVideos()
+        return this.renderVideosView()
       case apiStatusConstants.inProgress:
         return this.renderLoadingView()
       case apiStatusConstants.failure:
@@ -164,18 +111,22 @@ class TrendingRoute extends Component {
         {value => {
           const {isDarkTheme} = value
           const bgColor = isDarkTheme ? '#0f0f0f' : '#f4f4f4'
+          const textColor = isDarkTheme ? '#f9f9f9' : '#231f20'
+          const headBgColor = isDarkTheme ? '#181818' : '#94a3b8'
 
           return (
             <div data-testid="trending">
               <Header />
-              <HomeContainer bgColor={bgColor} data-testid="home">
-                <HomeStickyContainer>
-                  <SideBar />
-                </HomeStickyContainer>
-                <HomeSideContainer bgColor={bgColor}>
-                  {this.renderAllVideos()}
-                </HomeSideContainer>
-              </HomeContainer>
+              <SideBar />
+              <TrendingContainer data-testid="trending" bgColor={bgColor}>
+                <TrendingVideoTitle headBgColor={headBgColor}>
+                  <TitleIconContainer>
+                    <AiFillFire size={35} color="#ff0000" />
+                  </TitleIconContainer>
+                  <TrendingText textColor={textColor}>Trending</TrendingText>
+                </TrendingVideoTitle>
+                {this.renderTrendingVideos()}
+              </TrendingContainer>
             </div>
           )
         }}

@@ -1,12 +1,12 @@
 import CartContext from '../../context/CartContext'
 
 import {
-  NavLink,
-  VideoCardContainer,
-  ThumbnailImage,
-  VideoDetailsContainer,
-  VideoCardBottomContainer,
-  VideoDetailsText,
+  ItemLink,
+  GamingListItem,
+  GamingThumbnailImage,
+  GamingContentSection,
+  GamingTitle,
+  GamingViewsAndDate,
 } from './styledComponents'
 
 const GamingVideoItem = props => {
@@ -17,27 +17,20 @@ const GamingVideoItem = props => {
     <CartContext.Consumer>
       {value => {
         const {isDarkTheme} = value
-
-        const bgColor = isDarkTheme ? '#181818' : '#f9f9f9'
-
         const textColor = isDarkTheme ? '#f9f9f9' : '#181818'
 
         return (
-          <NavLink to={`videos/${id}`} bgColor={bgColor}>
-            <VideoCardContainer>
-              <ThumbnailImage src={thumbnailUrl} alt="video thumbnail" />
-              <VideoCardBottomContainer>
-                <VideoDetailsContainer>
-                  <VideoDetailsText textColor={textColor} size={16}>
-                    {title}
-                  </VideoDetailsText>
-                  <VideoDetailsText textColor={textColor} size={12}>
-                    {viewCount} views
-                  </VideoDetailsText>
-                </VideoDetailsContainer>
-              </VideoCardBottomContainer>
-            </VideoCardContainer>
-          </NavLink>
+          <ItemLink to={`videos/${id}`} className="link">
+            <GamingListItem>
+              <GamingThumbnailImage src={thumbnailUrl} alt="video thumbnail" />
+              <GamingContentSection>
+                <GamingTitle textColor={textColor}>{title}</GamingTitle>
+                <GamingViewsAndDate textColor={textColor}>
+                  {viewCount} views
+                </GamingViewsAndDate>
+              </GamingContentSection>
+            </GamingListItem>
+          </ItemLink>
         )
       }}
     </CartContext.Consumer>
