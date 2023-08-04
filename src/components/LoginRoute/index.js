@@ -75,7 +75,7 @@ class Login extends Component {
           id="username"
           value={username}
           onChange={this.getUsername}
-          placeholder="username"
+          placeholder="Username"
         />
       </>
     )
@@ -92,7 +92,7 @@ class Login extends Component {
           id="password"
           value={password}
           onChange={this.getPassword}
-          placeholder="password"
+          placeholder="Password"
         />
         <ShowHideContainer>
           <CheckboxInput

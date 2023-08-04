@@ -2,32 +2,46 @@ import styled from 'styled-components/macro'
 
 export const NotFoundContainer = styled.div`
   display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
-  align-self: center;
+  margin-top: 60px;
+  margin-bottom: 60px;
+  overflow-y: auto;
   background-color: ${props => props.bgColor};
-  margin-left: 250px;
+  min-height: 92vh;
+  @media screen and (min-width: 768px) {
+    margin-left: 250px;
+    margin-bottom: 0px;
+  }
 `
 
-export const Image = styled.img`
-  width: 280px;
-  height: 280px;
+export const NotFoundVideosView = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: none;
 `
 
-export const Heading = styled.h1`
-  font-size: ${props => props.size}px;
+export const NotFoundVideoImage = styled.img`
+  width: 200px;
+  @media screen and (min-width: 768px) {
+    width: 450px;
+  }
+`
+
+export const NotFoundVideosHeading = styled.h1`
+  font-size: 25px;
   font-family: 'Roboto';
-  font-weight: 600;
-  color: ${props => props.textColor};
-  line-height: 1.5;
+  text-align: center;
+  color: ${props => props.headingColor};
 `
 
-export const Desc = styled.p`
-  color: ${props => props.textColor};
-  font-size: 15px;
+export const NotFoundVideosNote = styled.p`
+  color: ${props => props.noteColor};
+  font-size: 18px;
   font-family: 'Roboto';
-  line-height: 1.5;
+  text-align: center;
 `
 
 export const RetryButton = styled.button`

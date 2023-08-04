@@ -3,48 +3,58 @@ import Header from '../Header'
 import SideBar from '../SideBar'
 import {
   NotFoundContainer,
-  Image,
-  Heading,
-  Desc,
-  HomeContainer,
-  HomeStickyContainer,
+  NotFoundVideoImage,
+  NotFoundVideosHeading,
+  NotFoundVideosNote,
+  NotFoundVideosView,
+  RetryButton,
 } from './styledComponents'
 
-const NotFound = () => (
-  <CartContext.Consumer>
-    {value => {
-      const {isDarkTheme} = value
+const NotFound = props => {
+  const {onRetry} = props
 
-      const bgColor = isDarkTheme ? '#231f20' : '#f4f4f4'
+  const onClickRetry = () => {
+    onRetry()
+  }
+  return (
+    <CartContext.Consumer>
+      {value => {
+        const {isDarkTheme} = value
 
-      const textColor = isDarkTheme ? '#f9f9f9' : '#231f20'
+        const bgColor = isDarkTheme ? '#231f20' : '#f4f4f4'
+        const headingColor = isDarkTheme ? '#f1f5f9' : '#1e293b'
+        const noteColor = isDarkTheme ? '#f9f9f9' : '#475569'
 
-      return (
-        <div data-testid="home">
-          <Header />
-          <HomeContainer bgColor={bgColor}>
-            <HomeStickyContainer>
-              <SideBar />
-            </HomeStickyContainer>
+        return (
+          <>
+            <Header />
+            <SideBar />
             <NotFoundContainer bgColor={bgColor}>
-              <Image
-                src={
-                  isDarkTheme
-                    ? 'https://assets.ccbp.in/frontend/react-js/nxt-watch-not-found-light-theme-img.png'
-                    : 'https://assets.ccbp.in/frontend/react-js/nxt-watch-not-found-dark-theme-img.png'
-                }
-                alt="not found"
-              />
-              <Heading textColor={textColor}>Page Not Found</Heading>
-              <Desc textColor={textColor}>
-                we are sorry, the page you requested could not be found.
-              </Desc>
+              <NotFoundVideosView>
+                <NotFoundVideoImage
+                  src={
+                    isDarkTheme
+                      ? 'https://assets.ccbp.in/frontend/react-js/nxt-watch-not-found-light-theme-img.png'
+                      : 'https://assets.ccbp.in/frontend/react-js/nxt-watch-not-found-dark-theme-img.png'
+                  }
+                  alt="not found"
+                />
+                <NotFoundVideosHeading headingColor={headingColor}>
+                  Page Not Found
+                </NotFoundVideosHeading>
+                <NotFoundVideosNote noteColor={noteColor}>
+                  we are sorry, the page you requested could not be found.
+                </NotFoundVideosNote>
+                <RetryButton type="button" onClick={onClickRetry}>
+                  Retry
+                </RetryButton>
+              </NotFoundVideosView>
             </NotFoundContainer>
-          </HomeContainer>
-        </div>
-      )
-    }}
-  </CartContext.Consumer>
-)
+          </>
+        )
+      }}
+    </CartContext.Consumer>
+  )
+}
 
 export default NotFound
